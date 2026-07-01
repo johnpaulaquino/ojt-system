@@ -36,15 +36,16 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-white dark:bg-[#111111] rounded-2xl shadow-xl dark:shadow-none border border-gray-100 dark:border-gray-800 p-8">
         
         {/*Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            OJT Monitor
-          </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Sign in to your account to continue
-          </p>
+        <div className="mb-8 text-center border-b border-gray-100 dark:border-gray-800 pt-6">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              OJT Monitor
+            </h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Sign in to your account to continue
+            </p>
+          </div>
         </div>
-
         {/*Form */}
         <form className="space-y-5" onSubmit={handleLogin}>
           
@@ -105,7 +106,7 @@ export default function LoginPage() {
           {/*Submit Button */}
           <button
             type="submit"
-            className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 dark:text-gray-900 dark:bg-white dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-offset-[#111111] dark:focus:ring-white transition-colors"
+            className="cursor-pointer w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 dark:text-gray-900 dark:bg-white dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-offset-[#111111] dark:focus:ring-white transition-colors"
           >
             Sign In
             <ArrowRight className="h-4 w-4" />

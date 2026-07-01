@@ -18,12 +18,11 @@ export default function Sidebar() {
   const { isExpanded, toggleSidebar } = useSidebar();
   const pathname = usePathname();
 
-  // Updated navigation to match your screenshot
   const navItems = [
-    { name: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
-    { name: 'Student List', icon: Users, href: '/students' },
-    { name: 'Create User', icon: UserPlus, href: '/users' },
-    { name: 'Activity Logs', icon: Activity, href: '/logs' },
+    { name: 'Dashboard', icon: LayoutDashboard, href: '/admin/dashboard' },
+    { name: 'Student List', icon: Users, href: '/admin/student-list' },
+    { name: 'Create User', icon: UserPlus, href: '/admin/create-user' },
+    { name: 'Activity Logs', icon: Activity, href: '/admin/activity-logs' },
   ];
 
   return (
