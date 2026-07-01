@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@layer base {
+  /* This ensures a smooth transition when clicking the theme toggle */
+  body {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}
+
+/* Optional: Custom scrollbar to match the sleek aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full dark:bg-gray-700;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
