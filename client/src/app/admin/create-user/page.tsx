@@ -1,9 +1,9 @@
 import { Info, UserPlus } from 'lucide-react';
 import { Card, CardBody } from '@/src/components/ui/Card';
 
-export default function CreateUser() {
+export default function CreateUserPage() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto space-y-6">
       {/* Page Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-white mb-2">Register New Student</h1>

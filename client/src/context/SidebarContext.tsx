@@ -2,17 +2,15 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-// Define the shape of our context state
 interface SidebarContextType {
   isExpanded: boolean;
   toggleSidebar: () => void;
 }
 
-// Create the context
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 export function SidebarProvider({ children }: { children: ReactNode }) {
-  // Set default state to true (sidebar expanded)
+
   const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleSidebar = () => {
@@ -26,7 +24,6 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Custom hook to easily use this context in any component
 export function useSidebar() {
   const context = useContext(SidebarContext);
   

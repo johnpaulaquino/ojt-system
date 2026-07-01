@@ -1,0 +1,17 @@
+fastapi[standard]
+sqlmodel
+alembic
+asyncpg
+sendgrid
+pydantic-settings
+python-dotenv
+passlib[argon2]
+python-jose[cryptography]
+requests
+msgpack
+redis
+cloudinary
+fastapi-mail
+cryptography
+tenacity
+python-json-logger
