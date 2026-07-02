@@ -4,9 +4,8 @@ import Image from 'next/image';
 import { useSidebar } from '@/src/context/SidebarContext';
 import { 
   LayoutDashboard, 
-  Users, 
-  UserPlus, 
-  Activity, 
+  CalendarDays, 
+  User, 
   ChevronLeft, 
   ChevronRight,
   LogOut 
@@ -14,27 +13,26 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function Sidebar() {
+export default function UserSidebar() {
   const { isExpanded, toggleSidebar } = useSidebar();
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Dashboard', icon: LayoutDashboard, href: '/admin/dashboard' },
-    { name: 'Student List', icon: Users, href: '/admin/student-list' },
-    { name: 'Create User', icon: UserPlus, href: '/admin/create-user' },
-    { name: 'Activity Logs', icon: Activity, href: '/admin/activity-logs' },
+    { name: 'Dashboard', icon: LayoutDashboard, href: '/users/dashboard' },
+    { name: 'Schedule', icon: CalendarDays, href: '/users/schedule' },
+    { name: 'User Profile', icon: User, href: '/users/user-profile' },
   ];
 
   return (
     <aside
       className={`${
         isExpanded ? 'w-64' : 'w-20'
-      } transition-all duration-300 ease-in-out hidden md:flex flex-col bg-white dark:bg-[#111111] border-r border-gray-200 dark:border-gray-800 h-screen sticky top-0`}
+      } transition-all duration-300 ease-in-out hidden md:flex flex-col bg-[#111111] border-r border-gray-800 h-screen sticky top-0`}
     >
-      {/* Header */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-800">
+      {/*Header & Logo */}
+      <div className="h-16 flex items-center justify-between px-4 border-b border-gray-800">
         {isExpanded && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Image 
               src="/logo.jpg" 
               alt="Logo" 
@@ -42,12 +40,12 @@ export default function Sidebar() {
               height={32} 
               className="rounded-full object-cover"
             />
-            <span className="font-bold text-lg text-gray-900 dark:text-white truncate">OJT Monitoring</span>
+            <span className="font-bold text-lg text-white truncate">OJT Monitoring</span>
           </div>
         )}
         <button
           onClick={toggleSidebar}
-          className={`cursor-pointer p-1.5 rounded-lg bg-gray-100 dark:bg-[#0a0a0a] hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors ${
+          className={`cursor-pointer p-1.5 rounded-lg bg-[#0a0a0a] hover:bg-gray-800 text-gray-400 transition-colors ${
             !isExpanded && 'mx-auto'
           }`}
         >
@@ -55,7 +53,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/*Navigation */}
+      {/*Navigation Links*/}
       <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1">
         {navItems.map((item) => {
           const isActive = pathname?.startsWith(item.href);
@@ -68,8 +66,8 @@ export default function Sidebar() {
                 isExpanded ? 'justify-start px-3' : 'justify-center px-0'
               } py-2.5 rounded-lg transition-colors group ${
                 isActive
-                  ? 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white'
+                  ? 'bg-gray-800 text-white'
+                  : 'text-gray-400 hover:bg-gray-800/50 hover:text-white'
               }`}
             >
               <item.icon size={18} className="shrink-0" />
@@ -83,26 +81,26 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/*Profile Section */}
-      <div className="p-4 border-t border-gray-200 dark:border-gray-800">
+      {/* --- Bottom User Profile Section --- */}
+      <div className="p-4 border-t border-gray-800">
         {isExpanded ? (
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-200 shrink-0" />
+              <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
               <div className="overflow-hidden">
-                <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">Juan Dela Cruz</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">name@example.com</p>
+                <p className="text-sm font-semibold text-white truncate">Juan Dela Cruz</p>
+                <p className="text-xs text-gray-400 truncate">name@example.com</p>
               </div>
             </div>
-            <button className="flex items-center justify-center gap-2 w-full py-2 bg-gray-50 dark:bg-[#1a1a1a] hover:bg-gray-100 dark:hover:bg-gray-800 text-sm text-gray-700 dark:text-gray-300 rounded-lg transition-colors border border-gray-200 dark:border-gray-800">
+            <button className="flex items-center justify-center gap-2 w-full py-2 bg-[#1a1a1a] hover:bg-gray-800 text-sm text-gray-300 rounded-lg transition-colors border border-gray-800 cursor-pointer">
               <LogOut size={16} />
               Sign Out
             </button>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-200 shrink-0" />
-            <button className="p-2 bg-gray-50 dark:bg-[#1a1a1a] hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg transition-colors border border-gray-200 dark:border-gray-800">
+            <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
+            <button className="p-2 bg-[#1a1a1a] hover:bg-gray-800 text-gray-300 rounded-lg transition-colors border border-gray-800 cursor-pointer">
               <LogOut size={16} />
             </button>
           </div>

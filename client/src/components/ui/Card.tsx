@@ -1,22 +1,18 @@
 import { ReactNode } from 'react';
 
 interface CardProps {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
 }
 
-// The main container for the card
 export function Card({ children, className = '' }: CardProps) {
   return (
-    <div 
-      className={`bg-[#111111] border border-gray-800 rounded-xl shadow-sm overflow-hidden ${className}`}
-    >
+    <div className={`bg-card border border-border rounded-xl shadow-sm ${className}`}>
       {children}
     </div>
   );
 }
 
-// Optional Header if you need a title area separated by a line
 export function CardHeader({ 
   title, 
   subtitle, 
@@ -39,10 +35,10 @@ export function CardHeader({
   );
 }
 
-// The inner padding area for your forms or lists
+
 export function CardBody({ children, className = '' }: CardProps) {
   return (
-    <div className={`p-6 md:p-8 ${className}`}>
+    <div className={`p-6 ${className}`}>
       {children}
     </div>
   );
