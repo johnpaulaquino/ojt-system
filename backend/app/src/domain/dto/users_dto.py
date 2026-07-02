@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel, ConfigDict
 
-from backend.app.src.schema import CloudinaryImageSchema
+from src.schema import CloudinaryImageSchema
 
 
 class UsersDTO(BaseModel):
