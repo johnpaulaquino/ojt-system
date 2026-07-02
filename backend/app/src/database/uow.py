@@ -1,7 +1,12 @@
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.src.database.repositories.user_repository import UserRepository
+
+
 class SQLUnitOfWork:
     def __init__(self, _db: AsyncSession):
         self.__db = _db
+        self.users = UserRepository(_db)
 
     async def __aenter__(self):
         return self

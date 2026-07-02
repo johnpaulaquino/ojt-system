@@ -1,12 +1,11 @@
-import uuid
+
 from typing import Optional
 from uuid import uuid4
 
-from pydantic import BaseModel
 from sqlalchemy import Column, JSON
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
 
-from backend.app.src.schema import CloudinaryImageSchema
+from app.src.schema import CloudinaryImageSchema
 
 
 class UserProgramType(str):
@@ -15,7 +14,7 @@ class UserProgramType(str):
     WORK_IMMERSION = "Work Immersion"
 
 
-class BaseUserInformation(BaseModel):
+class BaseUserInformation(SQLModel):
     fullname: str = Field(nullable=True)
     contact_no: str = Field(nullable=True)
     academic_year: str = Field(nullable=True)
@@ -25,11 +24,18 @@ class BaseUserInformation(BaseModel):
     total_hours: int = Field(nullable=True)
 
 
-
 class UserInformation(BaseUserInformation, table=True):
     __tablename__ = "user_information"
-    user_info_id : str = Field(default_factory=lambda : str(uuid4()),primary_key=True )
+    user_info_id: str = Field(default_factory=lambda: str(uuid4()), primary_key=True)
     profile_img: CloudinaryImageSchema = Field(sa_column=Column(JSON, nullable=True))
-    user_id_ufk : str = Field(foreign_key="users.user_id",nullable=True,ondelete='CASCADE')
+    user_id_ufk: str = Field(foreign_key="users.user_id", nullable=True, ondelete='CASCADE')
+
+
+class CreateUserInformation(BaseUserInformation):
+    pass
+
+
+class UpdateUserInformation(BaseUserInformation):
+    profile_img: Optional[CloudinaryImageSchema] = Field(sa_column=Column(JSON, nullable=True))
 
 

@@ -1,9 +1,9 @@
 from datetime import datetime
 from uuid import uuid4
 
-from pydantic import BaseModel
 from sqlalchemy import Column, DateTime, func
-from sqlmodel import Field
+from sqlmodel import Field, SQLModel
+
 
 class UserRole(str):
     ADMIN = "Admin"
@@ -11,15 +11,13 @@ class UserRole(str):
 
 
 
-
-
-class BaseUsers(BaseModel):
+class BaseUsers(SQLModel):
     student_id : str = Field(nullable=False, unique=True)
     email : str = Field(nullable=True, unique=True)
 
 
 
-class Users(BaseUsers, table=True):
+class UsersModel(BaseUsers, table=True):
     __tablename__ = "users"
     user_id : str = Field(default_factory=lambda : str(uuid4()),primary_key=True)
     password : str = Field(nullable= True)
@@ -31,5 +29,4 @@ class Users(BaseUsers, table=True):
 
 class CreateUser(BaseUsers):
     pass
-
 

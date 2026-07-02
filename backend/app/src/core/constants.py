@@ -37,6 +37,8 @@ class Constants(BaseSettings):
     DB_PROD_PORT : int
     DB_PROD_PASSWORD : str
 
+
+
     TEMPLATE_PATH: Path = Path(__file__).resolve().parent
 
     FILE_SIZE_LIMIT: int = 1024 * 1024 * 10  # it is exactly 10 mb
