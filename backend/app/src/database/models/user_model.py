@@ -1,8 +1,10 @@
 from datetime import datetime
 from uuid import uuid4
 
+from pydantic.v1 import EmailStr
 from sqlalchemy import Column, DateTime, func
 from sqlmodel import Field, SQLModel
+from starlette.authentication import BaseUser
 
 
 class UserRole(str):
@@ -13,11 +15,11 @@ class UserRole(str):
 
 class BaseUsers(SQLModel):
     student_id : str = Field(nullable=False, unique=True)
-    email : str = Field(nullable=True, unique=True)
+    email : str | EmailStr = Field(nullable=True, unique=True)
 
 
 
-class UsersModel(BaseUsers, table=True):
+class Users(BaseUsers, table=True):
     __tablename__ = "users"
     user_id : str = Field(default_factory=lambda : str(uuid4()),primary_key=True)
     password : str = Field(nullable= True)
@@ -30,3 +32,5 @@ class UsersModel(BaseUsers, table=True):
 class CreateUser(BaseUsers):
     pass
 
+class UpdateUser(BaseUser):
+    pass

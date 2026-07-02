@@ -23,6 +23,9 @@ class Constants(BaseSettings):
     DB_PORT: int
 
     SERVER_PORT: int
+    #For api prefix
+    VERSION_PREFIX : str = "v1" #default version
+    API_PREFIX : str = 'api'
     
     # Cloudinary config
     C_NAME: str

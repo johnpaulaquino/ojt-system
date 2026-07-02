@@ -3,11 +3,11 @@ import sys
 from fastapi import FastAPI
 import uvicorn
 
-from app.src.api.v1.v1_user_api import v1_user_route
+from app.src.api.v1.v1_auth_api import v1_auth_route
 
 app = FastAPI()
 
-app.include_router(v1_user_route)
+app.include_router(v1_auth_route)
 
 def start():
     """Entry point for the 'server' command in pyproject.toml"""
