@@ -3,9 +3,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.src.database.models.user_information import UserInformation
 from app.src.domain.dto.users_dto import FullUserInformationDTO
-from backend.app.src.database.models.user_model import CreateUser, UsersModel
-from backend.app.src.domain.dto.users_dto import UsersDTO
-from backend.app.src.domain.interface.aql_crud_interface import SQLCrudInterface
+from app.src.database.models.user_model import CreateUser, UsersModel
+from app.src.domain.dto.users_dto import UsersDTO
+from app.src.domain.interface.aql_crud_interface import SQLCrudInterface
 
 
 class UserRepository(SQLCrudInterface):

@@ -4,12 +4,13 @@
 *.env
 # Ignore all __pycache__ directories
 __pycache__/
-
+/migrations
+/migration
 # Ignore compiled Python files
 *.pyc
 *.pyo
 *.pyd
-
+paul@paul-FMVNA7S7:~/Desktop/ojt-system/backend
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
